@@ -14,7 +14,7 @@ terraform -help
 # In this module, we are simply trying to get the configuration deployed.
 # First we'll copy our file from the base_web_app to a working directory
 mkdir globo_web_app
-cp ./base_web_app/main.tf ./globo_web_app/main.tf
+cp ./main/base_web_app/main.tf ./globo_web_app/main.tf
 
 # Now we can work with the main.tf file in globo_web_app
 cd globo_web_app

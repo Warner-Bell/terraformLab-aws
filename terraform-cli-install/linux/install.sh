@@ -6,6 +6,7 @@ VERSION=$(echo $LATEST_TAG | grep -Eo "(\d+\.)+\d+")
 curl -OL https://releases.hashicorp.com/terraform/${VERSION}/terraform_${VERSION}_linux_amd64.zip
 
 # install
+sudo apt install unzip
 unzip terraform_${VERSION}_linux_amd64.zip
 mv terraform /usr/local/bin/
 
