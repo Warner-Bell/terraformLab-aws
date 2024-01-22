@@ -18,9 +18,6 @@ data "aws_availability_zones" "available" {
   state = "available"
 }
 
-data "aws_ssm_parameter" "amzn2_linux" {
-  name = "/aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2"
-}
 
 ##################################################################################
 # RESOURCES
@@ -46,7 +43,7 @@ resource "aws_subnet" "public_subnet1" {
   cidr_block              = var.vpc_public_subnets_cidr_block[0]
   vpc_id                  = aws_vpc.app.id
   map_public_ip_on_launch = var.map_public_ip_on_launch
-  availability_zone = data.aws_availability_zones.available.names[0]
+  availability_zone       = data.aws_availability_zones.available.names[0]
 
   tags = local.common_tags
 }
@@ -55,7 +52,7 @@ resource "aws_subnet" "public_subnet2" {
   cidr_block              = var.vpc_public_subnets_cidr_block[1]
   vpc_id                  = aws_vpc.app.id
   map_public_ip_on_launch = var.map_public_ip_on_launch
-  availability_zone = data.aws_availability_zones.available.names[1]
+  availability_zone       = data.aws_availability_zones.available.names[1]
 
   tags = local.common_tags
 }
@@ -93,7 +90,7 @@ resource "aws_security_group" "nginx_sg" {
     from_port   = 80
     to_port     = 80
     protocol    = "tcp"
-    cidr_blocks = [var.var.vpc_cidr_block]
+    cidr_blocks = [var.vpc_cidr_block]
   }
 
   # outbound internet access
